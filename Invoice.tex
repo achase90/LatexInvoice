@@ -1,0 +1,40 @@
+\input{preamble}
+\input{myinfo}
+
+\newcommand{\subtotal}{\$X,XXX}
+\newcommand{\taxes}{\$0}
+\newcommand{\paymentsreceived}{\$0}
+\newcommand{\total}{\$X,XXX}
+
+\newcommand{\clientaddress}{
+Client Name\par
+1 Client address\par
+City, State, Country\par
+Zip Code
+}
+
+\newcommand{\invoicenumber}{1001}
+
+\begin{document}
+\addheader
+\addcontactblock
+\hr
+
+\color{black}
+
+\centering
+\begin{tabularx}{\linewidth}{@{}Y r r r@{}}
+	\addtableheader
+	
+	
+\addtask{Main Task}{General Description of the main task, that wraps lines if it is too long.}{$X,XXX}{1}{$X,XXX}
+\addtask{Secondary Task}{General Description of the second task, which charges per hour.}{$XX/hr}{2.5}{$X,XXX}
+
+\end{tabularx}
+
+\additionalnotes{Note number 1\par
+	 Note number 2\par Note number 3}
+
+\addbottomtable
+\addfooter
+\end{document}

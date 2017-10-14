@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+\usepackage{tabularx}
+\usepackage[export]{adjustbox}
+\pagenumbering{gobble} % removes page numbering
+\usepackage[hidelinks]{hyperref}
+
+ % makes the name/location table a bit taller
+\setlength{\extrarowheight}{8pt}
+
+\newcolumntype{Y}{>{\raggedright}X}
+
+
+% Sans-serif font
+\renewcommand\familydefault{\sfdefault}
+
+\usepackage[letterpaper, bottom=0in, top=0in,right=1in,left=1in]{geometry}
+\usepackage{pagecolor} % sets page background color
+
+% colors
+\definecolor{blue}{RGB}{79,129,189}
+\definecolor{gray}{RGB}{127,127,127}
+
+% horizontal dashed lines
+\newcommand{\hr}{
+	\color{blue}{
+		\noindent\makebox[\linewidth]{\rule{\paperwidth}{4pt}}
+	}
+}
+
+\newcommand{\addtask}[5]{
+	\textbf{\large{#1}} \newline \color{gray} #2 & \verb|#3| & #4        & \verb|#5|\\}
+
+\newcommand{\addfooter}{\noindent\makebox[\linewidth][c]{
+		\colorbox{blue}{
+			\parbox{\paperwidth}{
+				\vspace{1\baselineskip}
+				\hspace*{\dimexpr\hoffset+\oddsidemargin+.9in\relax}
+				\color{white}{
+					\begin{minipage}[b]{0.5\textwidth}
+						\raggedright
+						Invoice \#: \invoicenumber\\
+						Date: \today
+					\end{minipage}
+					\begin{minipage}[b]{0.5\textwidth}
+						\raggedleft
+						Total Due:\\
+						\huge{\textbf{\total}}
+					\end{minipage}
+					\vspace{1.5\baselineskip}
+				}
+			}
+		}
+}
+}
+
+\newcommand{\addheader}{
+\noindent\makebox[\linewidth][c]{
+	\colorbox{blue}{
+		\parbox{\paperwidth}{
+			\vspace{1.5\baselineskip}
+			\hspace*{\dimexpr\hoffset+\oddsidemargin+.9in\relax}
+			\color{white}{
+				\begin{minipage}[b]{0.5\textwidth}
+					\raggedright
+					\huge{INVOICE}\\
+					\normalsize{Invoice \#: \invoicenumber\\
+						Date: \today}
+				\end{minipage}
+				\begin{minipage}[b]{0.5\textwidth}
+					\raggedleft
+					\mycontact
+				\end{minipage}
+				\vspace{1\baselineskip}
+			}
+		}
+	}
+}
+}
+
+\newcommand{\addcontactblock}{
+\begin{center}
+	\begin{minipage}[t]{0.33333\textwidth}
+		\raggedright
+		Billed To:\par
+		\clientaddress
+	\end{minipage}%
+	\begin{minipage}[t]{0.33333\textwidth}
+		\raggedright
+		Payable To:\par
+		\myaddress
+	\end{minipage}%
+	\begin{minipage}[t]{0.33333\textwidth}
+		\raggedleft
+		Invoice Total:\par
+		\color{blue}\huge{\textbf{\total}}
+	\end{minipage}
+\end{center}}
+
+\newcommand{\addtableheader}{ \textcolor{blue}{\textbf{Description}} &  \textcolor{blue}{\textbf{Cost}}     &  \textcolor{blue}{\textbf{Qty}}    &  \textcolor{blue}{\textbf{Amount}} \\}
+
+\newcommand{\addbottomtable}{\vspace*{\fill}
+	\begin{table}[!hbtp]
+		\hspace{4.6in}
+		\begin{tabularx}{\linewidth}{r r}
+			Subtotal & \subtotal\\
+			Taxes & \taxes\\
+			Payments Received & \paymentsreceived\\
+		\end{tabularx}
+\end{table}}
+
+\newcommand{\additionalnotes}[1]{
+	\vspace{2em}
+	\hr
+	\begin{flushleft}
+		\textbf{\Large{Additional Notes}}\par
+		\vspace{0.5em}
+		\color{gray}
+		#1
+	\end{flushleft}
+}

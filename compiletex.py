@@ -1,0 +1,1 @@
+import os , subprocessclean=TrueopenPDF = Truesubprocess.call(["pdflatex", "Invoice.tex"])if (clean):    os.remove("Invoice.log")    os.remove("Invoice.aux")if openPDF:    cmd = [r"C:/Program Files (x86)/Adobe/Acrobat Reader DC/Reader/AcroRd32.exe", "Invoice.pdf"]    subprocess.call(cmd,shell=True)
